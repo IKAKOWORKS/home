@@ -1,8 +1,425 @@
 <!DOCTYPE html>
-<html>
-<head><title>IKAKOWORKS</title></head>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IKAKOWORKS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #e8a0b0;
+      --blue: #88bcd4;
+      --green: #88c4a8;
+      --pink-light: #fdf0f3;
+      --blue-light: #f0f7fb;
+      --green-light: #f0f7f3;
+      --pink-mid: #f5d0d8;
+      --blue-mid: #c8e4f0;
+      --green-mid: #c8e8d8;
+      --text: #2c2c2c;
+      --text-mid: #555;
+      --text-light: #888;
+      --white: #ffffff;
+      --off-white: #fdfcfb;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 80px 24px 70px;
+      overflow: hidden;
+      background: linear-gradient(160deg, #fff6f8 0%, #f5f9fc 50%, #f3faf7 100%);
+    }
+
+    .hero-deco { position:absolute; border-radius:50%; filter:blur(50px); pointer-events:none; }
+    .hero-deco1 { width:320px;height:320px;background:var(--pink-mid);opacity:.4;top:-80px;left:-80px; }
+    .hero-deco2 { width:260px;height:260px;background:var(--blue-mid);opacity:.35;top:-40px;right:-60px; }
+    .hero-deco3 { width:280px;height:200px;background:var(--green-mid);opacity:.3;bottom:-60px;left:50%;transform:translateX(-50%); }
+
+    .hero-inner { position:relative; z-index:1; }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 10vw, 5.5rem);
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      color: var(--text);
+      animation: fadeUp .9s ease both;
+    }
+
+    .hero-sub {
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      color: var(--text-light);
+      margin-top: 8px;
+      animation: fadeUp .9s ease .1s both;
+    }
+
+    .hero-divider {
+      width: 56px;
+      height: 1.5px;
+      background: linear-gradient(to right, var(--pink), var(--blue), var(--green));
+      margin: 28px auto;
+      animation: fadeUp .9s ease .2s both;
+    }
+
+    .hero-concept {
+      max-width: 520px;
+      margin: 0 auto;
+      animation: fadeUp .9s ease .3s both;
+    }
+
+    .hero-catch {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .hero-text {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 2.1;
+    }
+
+    /* ========== MAIN ========== */
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.4em;
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    /* ========== プロフィール ========== */
+    .profile-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 44px 44px;
+      margin-bottom: 48px;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.05);
+      border: 1px solid rgba(232,160,176,0.25);
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp .9s ease .35s both;
+    }
+
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--pink), var(--blue), var(--green));
+    }
+
+    .profile-logo {
+      display: block;
+      height: 48px;
+      width: auto;
+      margin-bottom: 24px;
+      object-fit: contain;
+      object-position: left;
+    }
+
+    .profile-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .profile-name-ja {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      color: var(--text-light);
+      margin-bottom: 24px;
+    }
+
+    .profile-text {
+      font-size: 0.93rem;
+      line-height: 2.1;
+      color: var(--text-mid);
+      margin-bottom: 28px;
+    }
+
+    .profile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 24px;
+    }
+
+    .tag {
+      font-size: 0.76rem;
+      letter-spacing: 0.06em;
+      padding: 6px 15px;
+      border-radius: 20px;
+      color: var(--text-mid);
+    }
+    .tag-pink { background: var(--pink-light); border: 1px solid var(--pink-mid); }
+    .tag-blue { background: var(--blue-light); border: 1px solid var(--blue-mid); }
+    .tag-green { background: var(--green-light); border: 1px solid var(--green-mid); }
+
+    .license-box {
+      background: var(--off-white);
+      border-radius: 12px;
+      padding: 16px 20px;
+      font-size: 0.84rem;
+      color: var(--text-mid);
+      border-left: 3px solid var(--pink);
+      line-height: 1.9;
+    }
+
+    /* ========== WORKSカード ========== */
+    .works-section {
+      margin-bottom: 48px;
+      animation: fadeUp .9s ease .45s both;
+    }
+
+    .cards-main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    .cards-sub {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 580px) {
+      .cards-main, .cards-sub { grid-template-columns: 1fr; }
+      .profile-card { padding: 32px 24px; }
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 32px 28px;
+      text-decoration: none;
+      color: var(--text);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      transition: transform .28s ease, box-shadow .28s ease;
+      display: block;
+      border: 1px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 36px rgba(0,0,0,0.09); }
+
+    .card-pink { border-color: rgba(232,160,176,0.35); }
+    .card-pink::after { content:''; position:absolute; bottom:0;left:0;right:0;height:70px; background:linear-gradient(to top, var(--pink-light), transparent); pointer-events:none; }
+
+    .card-blue { border-color: rgba(136,188,212,0.35); }
+    .card-blue::after { content:''; position:absolute; bottom:0;left:0;right:0;height:70px; background:linear-gradient(to top, var(--blue-light), transparent); pointer-events:none; }
+
+    .card-green { border-color: rgba(136,196,168,0.35); }
+    .card-green::after { content:''; position:absolute; bottom:0;left:0;right:0;height:70px; background:linear-gradient(to top, var(--green-light), transparent); pointer-events:none; }
+
+    .card-chip {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--text-light);
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 3px 10px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.84rem;
+      color: var(--text-mid);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .card-arrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--text-light);
+    }
+
+    .card-sm { padding: 22px 24px; }
+    .card-sm .card-title { font-size: 1.1rem; margin-bottom: 4px; }
+    .card-sm .card-arrow { margin-top: 12px; }
+
+    /* ========== SNS ========== */
+    .sns-section {
+      text-align: center;
+      animation: fadeUp .9s ease .55s both;
+    }
+
+    .sns-links {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .sns-link {
+      text-decoration: none;
+      color: var(--text-mid);
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      padding: 11px 26px;
+      border-radius: 30px;
+      border: 1px solid #ddd;
+      background: var(--white);
+      transition: all .22s ease;
+    }
+
+    .sns-link:hover { border-color: var(--pink); color: var(--text); background: var(--pink-light); }
+
+    /* ========== FOOTER ========== */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--text-light);
+      border-top: 1px solid #eee;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
 <body>
-<h1>IKAKOWORKS</h1>
-<p>Coming soon...</p>
+
+<header class="hero">
+  <div class="hero-deco hero-deco1"></div>
+  <div class="hero-deco hero-deco2"></div>
+  <div class="hero-deco hero-deco3"></div>
+  <div class="hero-inner">
+    <h1 class="hero-title">IKAKOWORKS</h1>
+    <p class="hero-sub">CREATIVE &amp; EC WORKS</p>
+    <div class="hero-divider"></div>
+    <div class="hero-concept">
+      <p class="hero-catch">
+        日常に、余白と彩りを。<br>
+        <span style="font-size:0.85em; color:#aaa;">A life enriched by art &amp; design.</span>
+      </p>
+      <p class="hero-text">
+        インテリアのプロとして、アートのある暮らしを提案してきた IKAKOが、<br>
+        EC運営・デザイン制作・クリエイティブブランドの運営を通じて、<br>
+        豊かな日常のカタチをお届けします。
+      </p>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <p class="section-label">ABOUT</p>
+  <div class="profile-card">
+    <img
+      class="profile-logo"
+      src="https://www21.easy-myshop.jp/emsrsc/ikakoworks/logoimg/shoplogo.png"
+      alt="ROOM IKAKO logo"
+      onerror="this.style.display='none'"
+    >
+    <p class="profile-name">IKAKO</p>
+    <p class="profile-name-ja">いかこ</p>
+    <p class="profile-text">
+      インテリアコーディネーターとして新築住宅の内装提案を経て、フリーランスとして独立。ヤフオクでの出品を起点に、EC運営歴17年以上。楽天イーグルス公式オンラインショップの運営に携わった経験を持ち、現在はキャンバスアートのオンラインショップ「ROOM IKAKO」と、デジタルアートブランド「Kahoshi Design Lab」を運営。<br><br>
+      Photoshop・Illustratorを使ったデザイン制作、商品撮影、売上分析、広告運用まで一貫して対応。
+    </p>
+    <div class="profile-tags">
+      <span class="tag tag-pink">EC運営 17年+</span>
+      <span class="tag tag-blue">インテリアデザイン</span>
+      <span class="tag tag-green">グラフィックデザイン</span>
+      <span class="tag tag-pink">楽天 / BASE / EasyMyShop</span>
+      <span class="tag tag-blue">Instagram運営</span>
+      <span class="tag tag-green">商品撮影</span>
+    </div>
+    <div class="license-box">
+      <strong>【保有資格】</strong><br>
+      インテリアデザイナー ／ インテリアアドバイザー（JDP日本デザインプランナー協会）
+    </div>
+  </div>
+
+  <p class="section-label">WORKS</p>
+  <div class="works-section">
+    <div class="cards-main">
+      <a href="https://ikakoworks.easy-myshop.jp/" target="_blank" class="card card-pink">
+        <span class="card-chip">CANVAS ART SHOP</span>
+        <p class="card-title">ROOM IKAKO</p>
+        <p class="card-desc">キャンバスアートのオンラインショップ。インテリアに馴染む、上質なアート作品を販売。</p>
+        <p class="card-arrow">VISIT SHOP →</p>
+      </a>
+      <a href="https://kahoshi-design.booth.pm/" target="_blank" class="card card-blue">
+        <span class="card-chip">DIGITAL ART BRAND</span>
+        <p class="card-title">Kahoshi Design Lab</p>
+        <p class="card-desc">幻想的なアート・イラスト素材をデジタルデータで販売するクリエイティブブランド。</p>
+        <p class="card-arrow">VIEW WORKS →</p>
+      </a>
+    </div>
+    <div class="cards-sub">
+      <a href="https://kahoshi-design.booth.pm/" target="_blank" class="card card-green card-sm">
+        <span class="card-chip">BOOTH</span>
+        <p class="card-title">Kahoshi Design Lab</p>
+        <p class="card-arrow">BOOTH で見る →</p>
+      </a>
+      <a href="https://www.etsy.com/shop/KahoshiDesignLab" target="_blank" class="card card-green card-sm">
+        <span class="card-chip">ETSY</span>
+        <p class="card-title">KahoshiDesignLab</p>
+        <p class="card-arrow">ETSY で見る →</p>
+      </a>
+    </div>
+  </div>
+
+  <p class="section-label">FOLLOW</p>
+  <div class="sns-section">
+    <div class="sns-links">
+      <a href="https://www.instagram.com/roomikako.poster/" target="_blank" class="sns-link">Instagram</a>
+      <a href="https://www.youtube.com/@roomikako" target="_blank" class="sns-link">YouTube</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; 2024 IKAKOWORKS. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
