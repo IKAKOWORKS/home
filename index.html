@@ -51,9 +51,9 @@
 
     .hero-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 10vw, 5.5rem);
+      font-size: clamp(2rem, 9vw, 5.5rem);
       font-weight: 300;
-      letter-spacing: 0.28em;
+      letter-spacing: clamp(0.08em, 1.5vw, 0.28em);
       color: var(--text);
       animation: fadeUp .9s ease both;
     }
@@ -213,6 +213,14 @@
 
     @media (max-width: 580px) {
       .profile-card { padding: 32px 24px; }
+      .hero { padding: 60px 16px 56px; }
+      .hero-sub { letter-spacing: 0.2em; }
+      main { padding: 40px 16px 60px; }
+      .card { padding: 24px 20px; }
+      .card-sm { padding: 18px 18px; }
+      .sns-links { gap: 10px; }
+      .sns-link { padding: 10px 18px; font-size: 0.75rem; }
+      .profile-tags { gap: 7px; }
     }
 
     .card-coming {
@@ -365,11 +373,11 @@
     <p class="profile-name">IKAKO</p>
     <p class="profile-name-ja">いかこ</p>
     <p class="profile-text">
-      インテリアコーディネーターとして新築住宅の内装提案を経て、フリーランスとして独立。ヤフオクでの出品を起点に、EC運営歴17年以上。楽天イーグルス公式オンラインショップの運営に携わった経験を持ち、現在はキャンバスアートのオンラインショップ「ROOM IKAKO」と、デジタルアートブランド「Kahoshi Design Lab」を運営。<br><br>
+      インテリアコーディネーターとして新築住宅の内装提案を経て、フリーランスとして独立。ヤフオクでの出品を起点に、EC運営歴15年以上。楽天イーグルス公式オンラインショップの運営に携わった経験を持ち、現在はキャンバスアートのオンラインショップ「ROOM IKAKO」と、デジタルアートブランド「Kahoshi Design Lab」を運営。<br><br>
       Photoshop・Illustratorを使ったデザイン制作、商品撮影、売上分析、広告運用まで一貫して対応。
     </p>
     <div class="profile-tags">
-      <span class="tag tag-pink">EC運営 17年+</span>
+      <span class="tag tag-pink">EC運営 15年+</span>
       <span class="tag tag-blue">インテリアデザイン</span>
       <span class="tag tag-green">グラフィックデザイン</span>
       <span class="tag tag-pink">楽天 / BASE / EasyMyShop</span>
