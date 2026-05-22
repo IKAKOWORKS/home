@@ -200,20 +200,31 @@
 
     .cards-main {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 20px;
       margin-bottom: 16px;
     }
 
     .cards-sub {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 16px;
     }
 
     @media (max-width: 580px) {
-      .cards-main, .cards-sub { grid-template-columns: 1fr; }
       .profile-card { padding: 32px 24px; }
+    }
+
+    .card-coming {
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      color: var(--text-light);
+      background: var(--off-white);
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 4px 12px;
+      margin-top: 8px;
     }
 
     .card {
@@ -351,12 +362,6 @@
 
   <p class="section-label">ABOUT</p>
   <div class="profile-card">
-    <img
-      class="profile-logo"
-      src="https://www21.easy-myshop.jp/emsrsc/ikakoworks/logoimg/shoplogo.png"
-      alt="ROOM IKAKO logo"
-      onerror="this.style.display='none'"
-    >
     <p class="profile-name">IKAKO</p>
     <p class="profile-name-ja">いかこ</p>
     <p class="profile-text">
@@ -382,28 +387,28 @@
     <div class="cards-main">
       <a href="https://ikakoworks.easy-myshop.jp/" target="_blank" class="card card-pink">
         <span class="card-chip">CANVAS ART SHOP</span>
+        <img
+          src="https://www21.easy-myshop.jp/emsrsc/ikakoworks/logoimg/shoplogo.png"
+          alt="ROOM IKAKO logo"
+          onerror="this.style.display='none'"
+          style="height:36px;width:auto;display:block;margin-bottom:16px;object-fit:contain;"
+        >
         <p class="card-title">ROOM IKAKO</p>
         <p class="card-desc">キャンバスアートのオンラインショップ。インテリアに馴染む、上質なアート作品を販売。</p>
         <p class="card-arrow">VISIT SHOP →</p>
       </a>
       <a href="https://kahoshi-design.booth.pm/" target="_blank" class="card card-blue">
-        <span class="card-chip">DIGITAL ART BRAND</span>
+        <span class="card-chip">DIGITAL ART BRAND / BOOTH</span>
         <p class="card-title">Kahoshi Design Lab</p>
         <p class="card-desc">幻想的なアート・イラスト素材をデジタルデータで販売するクリエイティブブランド。</p>
-        <p class="card-arrow">VIEW WORKS →</p>
-      </a>
-    </div>
-    <div class="cards-sub">
-      <a href="https://kahoshi-design.booth.pm/" target="_blank" class="card card-green card-sm">
-        <span class="card-chip">BOOTH</span>
-        <p class="card-title">Kahoshi Design Lab</p>
         <p class="card-arrow">BOOTH で見る →</p>
       </a>
-      <a href="https://www.etsy.com/shop/KahoshiDesignLab" target="_blank" class="card card-green card-sm">
-        <span class="card-chip">ETSY</span>
+      <div class="card card-green" style="opacity:0.7; cursor:default;">
+        <span class="card-chip">DIGITAL ART BRAND / ETSY</span>
         <p class="card-title">KahoshiDesignLab</p>
-        <p class="card-arrow">ETSY で見る →</p>
-      </a>
+        <p class="card-desc">幻想的なアート・イラスト素材をデジタルデータで販売するクリエイティブブランド。</p>
+        <span class="card-coming">🌱 準備中</span>
+      </div>
     </div>
   </div>
 
