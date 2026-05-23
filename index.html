@@ -533,16 +533,20 @@
         <div>
           <p class="section-kicker">CONTACT</p>
           <h2 class="section-title" id="contact-title">Get in touch</h2>
-          <p>商品に関するお問い合わせは、各ブランドのショップまたはSNSよりお願いいたします。ROOM IKAKOの商品については、オンラインショップのお問い合わせ窓口が最も確実です。</p>
+          <p>IKAKOWORKSへのお問い合わせは、総合お問い合わせフォームよりお願いいたします。ROOM IKAKO、Kahoshi Design Lab、制作・運営に関するご連絡もこちらからお送りいただけます。</p>
         </div>
-        <a class="button button-primary" href="https://ikakoworks.easy-myshop.jp/c-contact" target="_blank" rel="noopener">お問い合わせ →</a>
+        <a class="button button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSf20DmiM56dYnvEVoszWnlssxy7NjQBB-hEm751DDG3hiJqcQ/viewform?usp=publish-editor" target="_blank" rel="noopener">お問い合わせフォーム →</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2026 IKAKOWORKS. All rights reserved.</p>
+    <p>&copy; <span id="copyright-year">2026</span> IKAKOWORKS. All rights reserved.</p>
     <p>Creative direction / Interior art / Digital design</p>
   </footer>
+
+  <script>
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
