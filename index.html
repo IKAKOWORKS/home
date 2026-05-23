@@ -63,8 +63,20 @@
     .brand-mark{
       text-decoration:none;
       display:flex;
-      flex-direction:column;
+      align-items:center;
+      gap:12px;
       line-height:1.1;
+    }
+    .brand-mark img{
+      width:34px;
+      height:34px;
+      display:block;
+      object-fit:contain;
+      flex:0 0 auto;
+    }
+    .brand-copy{
+      display:flex;
+      flex-direction:column;
     }
     .brand-mark strong{
       font-family:"Cormorant Garamond",serif;
@@ -416,6 +428,10 @@
       footer{display:block;line-height:2.2;padding:32px 22px 42px;}
     }
     @media(max-width:520px){
+      .brand-mark{gap:10px;}
+      .brand-mark img{width:30px;height:30px;}
+      .brand-mark strong{font-size:1.28rem;letter-spacing:.15em;}
+      .brand-mark span{font-size:.58rem;letter-spacing:.18em;}
       .hero-title{
         font-size:clamp(2.35rem,11vw,2.9rem);
         letter-spacing:.035em;
@@ -442,8 +458,11 @@
   <header class="site-header">
     <nav class="nav" aria-label="Main Navigation">
       <a class="brand-mark" href="#top" aria-label="IKAKOWORKS top">
-        <strong>IKAKOWORKS</strong>
-        <span>CREATIVE &amp; EC WORKS</span>
+        <img src="https://www21.easy-myshop.jp/emsrsc/ikakoworks/res/IKAKOWORKS_logo.png?260523180700" alt="" aria-hidden="true">
+        <span class="brand-copy">
+          <strong>IKAKOWORKS</strong>
+          <span>CREATIVE &amp; EC WORKS</span>
+        </span>
       </a>
       <div class="nav-links">
         <a href="#brands">BRANDS</a>
