@@ -330,6 +330,41 @@
       border-radius:var(--radius);
       box-shadow:var(--shadow);
     }
+    .profile-head{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+    }
+    .profile-photo-wrap{
+      position:relative;
+      width:164px;
+      aspect-ratio:1/1;
+      margin-bottom:20px;
+      border-radius:50%;
+      overflow:hidden;
+      isolation:isolate;
+      box-shadow:0 18px 34px rgba(50,42,36,.10);
+      background:radial-gradient(circle at 50% 50%, rgba(255,255,255,.86) 0%, rgba(255,255,255,.62) 64%, rgba(255,255,255,.08) 86%, rgba(255,255,255,0) 100%);
+    }
+    .profile-photo-wrap::after{
+      content:"";
+      position:absolute;
+      inset:-10px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,0) 56%, rgba(255,255,255,.38) 76%, rgba(255,255,255,.72) 88%, rgba(255,255,255,.96) 100%);
+      pointer-events:none;
+      mix-blend-mode:screen;
+    }
+    .profile-photo{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center 32%;
+      display:block;
+      border-radius:50%;
+      -webkit-mask-image:radial-gradient(circle, #000 60%, rgba(0,0,0,.90) 74%, rgba(0,0,0,.42) 88%, transparent 100%);
+      mask-image:radial-gradient(circle, #000 60%, rgba(0,0,0,.90) 74%, rgba(0,0,0,.42) 88%, transparent 100%);
+    }
     .profile-name{
       font-family:"Cormorant Garamond",serif;
       font-size:2.55rem;
@@ -432,6 +467,8 @@
       .brand-mark img{width:30px;height:30px;}
       .brand-mark strong{font-size:1.28rem;letter-spacing:.15em;}
       .brand-mark span{font-size:.58rem;letter-spacing:.18em;}
+      .profile-head{align-items:center;text-align:center;}
+      .profile-photo-wrap{width:138px;margin:0 auto 18px;}
       .hero-title{
         font-size:clamp(2.35rem,11vw,2.9rem);
         letter-spacing:.035em;
@@ -541,7 +578,10 @@
       </div>
 
       <div class="about-card">
-        <div>
+        <div class="profile-head">
+          <div class="profile-photo-wrap">
+            <img class="profile-photo" src="https://assets.ikakoworks.com/ikako_profile.jpg" alt="Kahoshi Ikakoのプロフィール画像">
+          </div>
           <p class="profile-name">Kahoshi Ikako</p>
           <p class="profile-sub">香星いか子</p>
           <div class="license-box">
