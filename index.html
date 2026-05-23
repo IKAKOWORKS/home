@@ -416,13 +416,25 @@
       footer{display:block;line-height:2.2;padding:32px 22px 42px;}
     }
     @media(max-width:520px){
-      .hero-title{font-size:3.25rem;letter-spacing:.07em;}
+      .hero-title{
+        font-size:clamp(2.35rem,11vw,2.9rem);
+        letter-spacing:.035em;
+        line-height:1.05;
+        white-space:nowrap;
+      }
       .hero-actions,.brand-actions{display:grid;grid-template-columns:1fr;}
       .button,.mini-link{width:100%;}
 
       .about-card,.contact-box{padding:26px 22px;}
       .brand-content{padding:26px 22px;}
       .brand-title{font-size:2rem;}
+    }
+
+    @media(max-width:380px){
+      .hero-title{
+        font-size:clamp(2.05rem,10.5vw,2.55rem);
+        letter-spacing:.025em;
+      }
     }
   </style>
 </head>
