@@ -196,32 +196,56 @@
     }
     .brand-grid{
       display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:24px;
+      grid-template-columns:1fr;
+      gap:22px;
     }
     .brand-card{
       position:relative;
       overflow:hidden;
-      min-height:420px;
-      padding:32px;
+      min-height:360px;
       border-radius:var(--radius);
-      background:rgba(255,255,255,.76);
-      border:1px solid rgba(255,255,255,.86);
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(255,255,255,.88);
       box-shadow:var(--shadow);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
+      display:grid;
+      grid-template-columns:minmax(280px,42%) minmax(0,1fr);
     }
-    .brand-card::before{
+    .brand-visual{
+      position:relative;
+      min-height:360px;
+      overflow:hidden;
+      background:rgba(255,250,246,.65);
+    }
+    .brand-visual img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+    }
+    .brand-visual::after{
       content:"";
       position:absolute;
       inset:0;
+      background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,0) 52%,rgba(255,250,246,.16));
       pointer-events:none;
-      opacity:.82;
     }
-    .brand-card.room::before{background:radial-gradient(420px 260px at 12% 0%,rgba(232,160,176,.28),transparent 64%);}
-    .brand-card.kdl::before{background:radial-gradient(420px 260px at 90% 0%,rgba(136,188,212,.27),transparent 64%),radial-gradient(380px 250px at 25% 100%,rgba(136,196,168,.20),transparent 68%);}
-    .brand-content,.brand-actions{position:relative;z-index:1;}
+    .brand-content{
+      position:relative;
+      padding:38px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      background:
+        radial-gradient(440px 280px at 100% 0%,rgba(232,160,176,.14),transparent 68%),
+        rgba(255,255,255,.60);
+    }
+    .brand-card.kdl .brand-content{
+      background:
+        radial-gradient(440px 280px at 100% 0%,rgba(136,188,212,.17),transparent 68%),
+        radial-gradient(380px 240px at 12% 100%,rgba(136,196,168,.12),transparent 72%),
+        rgba(255,255,255,.60);
+    }
+    .brand-actions{position:relative;z-index:1;}
     .chip{
       display:inline-flex;
       width:max-content;
@@ -382,7 +406,9 @@
       .section-head{display:block;}
       .section-lead{margin-top:18px;}
       .brand-grid,.about-card,.service-grid{grid-template-columns:1fr;}
-      .brand-card{min-height:360px;}
+      .brand-card{grid-template-columns:1fr;min-height:auto;}
+      .brand-visual{min-height:0;aspect-ratio:4/5;}
+      .brand-content{padding:30px 26px;}
       .contact-box{display:block;}
       .contact-box .button{margin-top:22px;}
       footer{display:block;line-height:2.2;padding:32px 22px 42px;}
@@ -392,7 +418,8 @@
       .hero-actions,.brand-actions{display:grid;grid-template-columns:1fr;}
       .button,.mini-link{width:100%;}
 
-      .brand-card,.about-card,.contact-box{padding:26px 22px;}
+      .about-card,.contact-box{padding:26px 22px;}
+      .brand-content{padding:26px 22px;}
       .brand-title{font-size:2rem;}
     }
   </style>
@@ -439,28 +466,33 @@
 
       <div class="brand-grid">
         <article class="brand-card room">
+          <div class="brand-visual">
+            <img src="https://www21.easy-myshop.jp/emsrsc/ikakoworks/res/ikakoworks_f874.jpg?260523171324" alt="ROOM IKAKOのキャンバスアートを飾ったインテリアイメージ">
+          </div>
           <div class="brand-content">
             <span class="chip">CANVAS ART SHOP</span>
-            <img class="brand-logo" src="https://www21.easy-myshop.jp/emsrsc/ikakoworks/logoimg/shoplogo.png" alt="ROOM IKAKO logo" onerror="this.style.display='none'">
             <h3 class="brand-title">ROOM IKAKO</h3>
             <p class="brand-desc">インテリアに馴染むキャンバスアートを制作・販売するオンラインショップ。空間に静かな彩りを添える、上質なアートポスターをお届けしています。</p>
-          </div>
-          <div class="brand-actions">
-            <a class="mini-link main" href="https://ikakoworks.easy-myshop.jp/" target="_blank" rel="noopener">Online Shop →</a>
-            <a class="mini-link" href="https://www.instagram.com/roomikako.poster/" target="_blank" rel="noopener">Instagram</a>
-            <a class="mini-link" href="https://www.youtube.com/@roomikako" target="_blank" rel="noopener">YouTube</a>
+            <div class="brand-actions">
+              <a class="mini-link main" href="https://ikakoworks.easy-myshop.jp/" target="_blank" rel="noopener">Online Shop →</a>
+              <a class="mini-link" href="https://www.instagram.com/roomikako.poster/" target="_blank" rel="noopener">Instagram</a>
+              <a class="mini-link" href="https://www.youtube.com/@roomikako" target="_blank" rel="noopener">YouTube</a>
+            </div>
           </div>
         </article>
 
         <article class="brand-card kdl">
+          <div class="brand-visual">
+            <img src="https://www21.easy-myshop.jp/emsrsc/ikakoworks/res/ikakoworks_KDL.png?260523171324" alt="Kahoshi Design Labの幻想的なイラスト素材を使った作例イメージ">
+          </div>
           <div class="brand-content">
             <span class="chip">DIGITAL ART BRAND</span>
             <h3 class="brand-title">Kahoshi Design Lab</h3>
             <p class="brand-desc">幻想的なアートデータやイラスト素材を扱うデジタルアートブランド。創作、装飾、デザイン制作に使えるビジュアル素材を展開しています。</p>
-          </div>
-          <div class="brand-actions">
-            <a class="mini-link main" href="https://kahoshi-design.booth.pm/" target="_blank" rel="noopener">BOOTH →</a>
-            <span class="mini-link disabled">Etsy Coming Soon</span>
+            <div class="brand-actions">
+              <a class="mini-link main" href="https://kahoshi-design.booth.pm/" target="_blank" rel="noopener">BOOTH →</a>
+              <span class="mini-link disabled">Etsy Coming Soon</span>
+            </div>
           </div>
         </article>
       </div>
@@ -477,8 +509,8 @@
 
       <div class="about-card">
         <div>
-          <p class="profile-name">IKAKO</p>
-          <p class="profile-sub">いかこ</p>
+          <p class="profile-name">Kahoshi Ikako</p>
+          <p class="profile-sub">日本名：香星いか子</p>
           <div class="license-box">
             <strong>保有資格</strong><br>
             インテリアデザイナー ／ インテリアアドバイザー<br>
