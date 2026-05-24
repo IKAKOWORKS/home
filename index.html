@@ -106,6 +106,37 @@
       background:linear-gradient(135deg,rgba(232,160,176,.20),rgba(136,188,212,.16));
       border:1px solid rgba(232,160,176,.32);
     }
+    .menu-toggle{
+      display:none;
+      width:44px;
+      height:44px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.72);
+      color:var(--text);
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+    }
+    .menu-toggle span,
+    .menu-toggle::before,
+    .menu-toggle::after{
+      content:"";
+      width:18px;
+      height:1px;
+      border-radius:999px;
+      background:currentColor;
+      display:block;
+      position:absolute;
+      transition:transform .22s ease,opacity .22s ease;
+    }
+    .menu-toggle{position:relative;}
+    .menu-toggle::before{transform:translateY(-6px);}
+    .menu-toggle::after{transform:translateY(6px);}
+    .menu-toggle[aria-expanded="true"] span{opacity:0;}
+    .menu-toggle[aria-expanded="true"]::before{transform:rotate(45deg);}
+    .menu-toggle[aria-expanded="true"]::after{transform:rotate(-45deg);}
     .hero{
       max-width:1120px;
       margin:0 auto;
@@ -448,8 +479,41 @@
       border-top:1px solid var(--line);
     }
     @media(max-width:860px){
-      .nav{min-height:auto;padding:18px 20px;align-items:flex-start;}
-      .nav-links{display:none;}
+      .nav{position:relative;min-height:auto;padding:14px 20px;align-items:center;}
+      .menu-toggle{display:inline-flex;}
+      .nav-links{
+        display:grid;
+        position:absolute;
+        top:100%;
+        left:20px;
+        right:20px;
+        gap:0;
+        padding:10px;
+        border:1px solid var(--line);
+        border-radius:18px;
+        background:rgba(255,253,251,.96);
+        box-shadow:0 18px 42px rgba(120,92,84,.13);
+        opacity:0;
+        visibility:hidden;
+        transform:translateY(-8px);
+        pointer-events:none;
+        transition:opacity .2s ease,transform .2s ease,visibility .2s ease;
+      }
+      .nav-links.is-open{
+        opacity:1;
+        visibility:visible;
+        transform:translateY(0);
+        pointer-events:auto;
+      }
+      .nav-links a{
+        padding:13px 14px;
+        border-radius:12px;
+      }
+      .nav-links a:hover{background:rgba(232,160,176,.10);}
+      .nav-cta{
+        margin-top:4px;
+        text-align:center;
+      }
       .hero{padding:76px 22px 56px;}
       .section{padding:54px 22px;}
       .section-head{display:block;}
@@ -501,7 +565,10 @@
           <span>CREATIVE &amp; EC WORKS</span>
         </span>
       </a>
-      <div class="nav-links">
+      <button class="menu-toggle" type="button" aria-label="メニューを開く" aria-controls="global-menu" aria-expanded="false">
+        <span></span>
+      </button>
+      <div class="nav-links" id="global-menu">
         <a href="#brands">BRANDS</a>
         <a href="#about">ABOUT</a>
         <a href="#service">SERVICE</a>
@@ -652,6 +719,24 @@
 
   <script>
     document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const globalMenu = document.getElementById('global-menu');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'メニューを開く' : 'メニューを閉じる');
+      globalMenu.classList.toggle('is-open', !isOpen);
+    });
+
+    globalMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'メニューを開く');
+        globalMenu.classList.remove('is-open');
+      });
+    });
   </script>
 </body>
 </html>
